@@ -1,6 +1,6 @@
-// OccupancyMapVector.h
+// OccupancyMapHash.h
 //
-// Implementation of occupancy map with 2D vector using base class for an occupancy map.
+// Implementation of occupancy map with ordered_set using base class for an occupancy map.
 //
 // The base class knows how to evaluate the performance of a given occupancy map implementation by :
 // 1) loading a pair of test files, one defining a list of test points corresponding to observed occupied
@@ -11,21 +11,18 @@
 // The test also reports on how long it takes to run through all the test points, to allow a comparison
 // of speed.
 
-#ifndef _OCCUPANCYMAPVECTOR_H
-#define _OCCUPANCYMAPVECTOR_H
+#ifndef _OCCUPANCYMAPHASH_H
+#define _OCCUPANCYMAPHASH_H
 
 #include "OccupancyMapBase.h"
 
 #include <string>
 #include <utility>        // std::pair
-#include <vector>
+#include <set>
 
-class COccupancyMapVector : public COccupancyMapBase
+class COccupancyMapHash : public COccupancyMapBase
 {
   public:
-    // Con struc tor
-    COccupancyMapVector();
-
     // Return the name of the approach as a string, for display purposes
     std::string GetNameOfApproach();
 
@@ -36,10 +33,10 @@ class COccupancyMapVector : public COccupancyMapBase
     bool CheckIsOccupied( std::pair<int,int> Location );
 
   private:
-    // 2D vector for storing occupancy
-    std::vector<std::vector<bool>> data;
+    // Ordered set for storing occupancy
+    std::set<std::pair<int, int>> data;
 
 };
 
-#endif // _OCCUPANCYMAPVECTOR_H
+#endif // _OCCUPANCYMAPHASH_H
 
