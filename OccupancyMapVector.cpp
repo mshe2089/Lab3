@@ -5,7 +5,7 @@
 #include <vector>
 
 //----------------------------------------------------------------------------------------------------------
-// Base class for an occupancy map.
+// Implementation of occupancy map with 2D vector using base class for an occupancy map.
 // An occupancy map accepts observed points, one at a time, to keep track of what parts of space are occupied.
 // It offers a function to check if a given point in space is occupied.
 //
@@ -23,7 +23,7 @@ COccupancyMapVector::COccupancyMapVector()
 // Return the name of the approach as a string, for display purposes
 std::string COccupancyMapVector::GetNameOfApproach()
 {
-  return "Set implementation";
+  return "Vector implementation";
 }
 
 // Add a location observed to be occupied to the map
