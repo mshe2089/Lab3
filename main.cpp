@@ -4,33 +4,28 @@
 #include "OccupancyMapHash.h"
 #include <iostream>
 
-//-----------------------------------------------------------------------------
+//- Forward declarations ----------------------------------------------------------------------------
+
+void TestOccupancyMapHash(); // Test set based occupancy map
+
+void TestOccupancyMapVector(); // Test vector based occupancy map
+
+//- Main program ----------------------------------------------------------------------------
+
 int main()
 {
+  TestOccupancyMapVector();
 
-  // Test basic functionality, development purposes only; remove before shipping
-  {
-    COccupancyMapVector myOccupancyMap;
+  TestOccupancyMapHash();
 
-    std::pair<int,int> TestLocation = std::make_pair(3, 4);
-    myOccupancyMap.AddOccupiedLocation( TestLocation );
-    
-    std::cout << "Location: " << TestLocation.first << " " << TestLocation.second << " returns ";
-    std::cout << myOccupancyMap.CheckIsOccupied( TestLocation ) << std::endl; 
-    
-    TestLocation.first = 0;
-    std::cout << "Location: " << TestLocation.first << " " << TestLocation.second << " returns ";
-    std::cout << myOccupancyMap.CheckIsOccupied( TestLocation ) << std::endl; 
-  }
+  return 0;
+}
 
-  {
-    // More comprehensive test
-    COccupancyMapVector myMap;
-    myMap.EvalPerformance( "ExampleObservations_Small.txt", "ExampleNotObserved_Small.txt" );
-  }
+//- Test functions ----------------------------------------------------------------------------
 
-
-  // Test basic functionality, development purposes only; remove before shipping
+void TestOccupancyMapHash()
+{
+  // Simple correctness test
   {
     COccupancyMapHash myOccupancyMap;
 
@@ -45,12 +40,33 @@ int main()
     std::cout << myOccupancyMap.CheckIsOccupied( TestLocation ) << std::endl; 
   }
 
+  // More comprehensive test
   {
-    // More comprehensive test
     COccupancyMapHash myMap;
     myMap.EvalPerformance( "ExampleObservations_Small.txt", "ExampleNotObserved_Small.txt" );
   }
-
-  return 0;
 }
 
+void TestOccupancyMapVector()
+{
+  // Simple correctness test
+  {
+    COccupancyMapVector myOccupancyMap;
+
+    std::pair<int,int> TestLocation = std::make_pair(3, 4);
+    myOccupancyMap.AddOccupiedLocation( TestLocation );
+    
+    std::cout << "Location: " << TestLocation.first << " " << TestLocation.second << " returns ";
+    std::cout << myOccupancyMap.CheckIsOccupied( TestLocation ) << std::endl; 
+    
+    TestLocation.first = 0;
+    std::cout << "Location: " << TestLocation.first << " " << TestLocation.second << " returns ";
+    std::cout << myOccupancyMap.CheckIsOccupied( TestLocation ) << std::endl; 
+  }
+
+  // More comprehensive test
+  {
+    COccupancyMapVector myMap;
+    myMap.EvalPerformance( "ExampleObservations_Small.txt", "ExampleNotObserved_Small.txt" );
+  }
+}

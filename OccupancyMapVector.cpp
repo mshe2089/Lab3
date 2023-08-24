@@ -15,10 +15,12 @@
 // The base class includes a built-in function for evaluating the correctness and speed of a particular derived 
 // class implementation of the occupancy map. See EvalPerformance() for details.
 
+const int COccupancyMapVector::dataMax = 2048;
+
 // Constructor
 COccupancyMapVector::COccupancyMapVector()
 {
-  data = std::vector<std::vector<bool>>(2048, std::vector<bool>(2048, false));
+  data = std::vector<std::vector<bool>>(dataMax, std::vector<bool>(dataMax, false));
 }
 
 // Return the name of the approach as a string, for display purposes

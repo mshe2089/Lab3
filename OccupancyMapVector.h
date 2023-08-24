@@ -23,6 +23,8 @@
 class COccupancyMapVector : public COccupancyMapBase
 {
   public:
+
+    static const int dataMax;
     // Con struc tor
     COccupancyMapVector();
 
